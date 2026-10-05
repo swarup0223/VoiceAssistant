@@ -23,7 +23,7 @@ int main(int argc, char* argv[])
     {
         QMessageBox::critical(
             nullptr,
-            "VoiceDesk - Voice Engine Error",
+            "VoiceAssistant - Voice Engine Error",
             "Failed to initialize the Whisper voice engine.\n\n"
             "Check that the Whisper model exists at:\n"
             "third_party/whisper.cpp/models/ggml-base.en.bin"

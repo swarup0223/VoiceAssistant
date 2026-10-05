@@ -112,7 +112,7 @@ MainWindow::MainWindow(
 
 void MainWindow::setupUi()
 {
-    setWindowTitle("VoiceDesk - Linux Desktop Assistant");
+    setWindowTitle("VoiceAssistant - Linux Desktop Assistant");
 
     resize(1050, 760);
     setMinimumSize(900, 650);
@@ -184,7 +184,7 @@ void MainWindow::setupUi()
 
     auto* titleLayout = new QVBoxLayout();
 
-    auto* title = new QLabel("VoiceDesk");
+    auto* title = new QLabel("VoiceAssistant");
 
     title->setStyleSheet(
         "QLabel {"
@@ -409,7 +409,7 @@ void MainWindow::setupUi()
     historyView_->setMinimumHeight(170);
 
     historyView_->setPlaceholderText(
-        "VoiceDesk command history will appear here..."
+        "VoiceAssistant command history will appear here..."
     );
 
     mainLayout->addWidget(historyView_, 1);
@@ -466,7 +466,7 @@ void MainWindow::startVoiceCommand()
     {
         QMessageBox::warning(
             this,
-            "VoiceDesk",
+            "VoiceAssistant",
             "Voice engine is not available."
         );
 
@@ -592,7 +592,7 @@ void MainWindow::processCommand(
 
         QMessageBox::warning(
             this,
-            "VoiceDesk Safety",
+            "VoiceAssistant Safety",
             "This command was blocked by the safety engine."
         );
 

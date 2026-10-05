@@ -1,12 +1,12 @@
-#ifndef VOICEDESK_DEVICE_DRIVER_CLIENT_HPP
-#define VOICEDESK_DEVICE_DRIVER_CLIENT_HPP
+#ifndef VOICEASSISTANT_DEVICE_DRIVER_CLIENT_HPP
+#define VOICEASSISTANT_DEVICE_DRIVER_CLIENT_HPP
 
 #include <string>
 
 class DeviceDriverClient {
 public:
     explicit DeviceDriverClient(
-        const std::string& device_path = "/dev/voicedesk"
+        const std::string& device_path = "/dev/voiceassistant"
     );
 
     ~DeviceDriverClient();

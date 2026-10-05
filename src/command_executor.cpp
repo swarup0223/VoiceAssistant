@@ -10,7 +10,7 @@
 CommandExecutor::CommandExecutor()
     : application_manager_(),
       browser_manager_(),
-      driver_("/dev/voicedesk")
+      driver_("/dev/voiceassistant")
 {
 }
 
@@ -36,14 +36,14 @@ void CommandExecutor::execute(
             )
             {
                 std::cout
-                    << "[VoiceDesk] Opened: "
+                    << "[VoiceAssistant] Opened: "
                     << command.argument
                     << '\n';
             }
             else
             {
                 std::cout
-                    << "[VoiceDesk] Application not found: "
+                    << "[VoiceAssistant] Application not found: "
                     << command.argument
                     << '\n';
             }
@@ -68,14 +68,14 @@ void CommandExecutor::execute(
             )
             {
                 std::cout
-                    << "[VoiceDesk] Opened URL: "
+                    << "[VoiceAssistant] Opened URL: "
                     << command.argument
                     << '\n';
             }
             else
             {
                 std::cout
-                    << "[VoiceDesk] Unable to open URL\n";
+                    << "[VoiceAssistant] Unable to open URL\n";
             }
 
             break;
@@ -98,14 +98,14 @@ void CommandExecutor::execute(
             )
             {
                 std::cout
-                    << "[VoiceDesk] Searching Google for: "
+                    << "[VoiceAssistant] Searching Google for: "
                     << command.argument
                     << '\n';
             }
             else
             {
                 std::cout
-                    << "[VoiceDesk] Search failed\n";
+                    << "[VoiceAssistant] Search failed\n";
             }
 
             break;
@@ -128,14 +128,14 @@ void CommandExecutor::execute(
             )
             {
                 std::cout
-                    << "[VoiceDesk] Closed: "
+                    << "[VoiceAssistant] Closed: "
                     << command.argument
                     << '\n';
             }
             else
             {
                 std::cout
-                    << "[VoiceDesk] Could not close: "
+                    << "[VoiceAssistant] Could not close: "
                     << command.argument
                     << '\n';
             }
@@ -243,7 +243,7 @@ void CommandExecutor::execute(
             }
 
             std::cout
-                << "[VoiceDesk] Disk information:\n";
+                << "[VoiceAssistant] Disk information:\n";
 
             std::system("df -h");
 
@@ -260,7 +260,7 @@ void CommandExecutor::execute(
             }
 
             std::cout
-                << "[VoiceDesk] Network information:\n";
+                << "[VoiceAssistant] Network information:\n";
 
             std::system("ip addr");
 
@@ -357,7 +357,7 @@ void CommandExecutor::execute(
             }
 
             std::cout
-                << "[VoiceDesk] Exiting...\n";
+                << "[VoiceAssistant] Exiting...\n";
 
             break;
         }
@@ -365,7 +365,7 @@ void CommandExecutor::execute(
         default:
         {
             std::cout
-                << "[VoiceDesk] Unknown command: "
+                << "[VoiceAssistant] Unknown command: "
                 << command.argument
                 << '\n';
 
@@ -377,7 +377,7 @@ void CommandExecutor::execute(
 void CommandExecutor::showHelp()
 {
     std::cout << R"(
-================ VoiceDesk Commands ================
+================ VoiceAssistant Commands ================
 
 APPLICATIONS
 

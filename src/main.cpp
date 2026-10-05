@@ -22,7 +22,7 @@ bool confirmCommand(
 )
 {
     std::cout
-        << "\nVoiceDesk Confirmation Required\n"
+        << "\nVoiceAssistant Confirmation Required\n"
         << "---------------------------------\n"
         << "Action: ";
 
@@ -58,7 +58,7 @@ bool confirmCommand(
     }
 
     std::cout
-        << "VoiceDesk: Action cancelled.\n";
+        << "VoiceAssistant: Action cancelled.\n";
 
     return false;
 }
@@ -73,7 +73,7 @@ int processCommand(
     if (input.empty())
     {
         std::cerr
-            << "VoiceDesk: Empty command.\n";
+            << "VoiceAssistant: Empty command.\n";
 
         return 1;
     }
@@ -86,7 +86,7 @@ int processCommand(
     if (!safety.isSafe(input))
     {
         std::cout
-            << "VoiceDesk Safety Engine: "
+            << "VoiceAssistant Safety Engine: "
             << "This command has been blocked "
             << "for security reasons.\n";
 
@@ -99,7 +99,7 @@ int processCommand(
     if (command.type == CommandType::UNKNOWN)
     {
         std::cout
-            << "VoiceDesk: Unknown command.\n";
+            << "VoiceAssistant: Unknown command.\n";
 
         return 1;
     }
@@ -107,7 +107,7 @@ int processCommand(
     if (command.type == CommandType::EXIT)
     {
         std::cout
-            << "VoiceDesk: Goodbye.\n";
+            << "VoiceAssistant: Goodbye.\n";
 
         return 0;
     }
@@ -130,7 +130,7 @@ int main()
 {
     std::cout << "\n";
     std::cout << "============================================\n";
-    std::cout << "              VOICEDESK\n";
+    std::cout << "              VOICEASSISTANT\n";
     std::cout << "       Linux Desktop Assistant\n";
     std::cout << "============================================\n\n";
 
@@ -153,7 +153,7 @@ int main()
     if (choice == "1")
     {
         std::cout
-            << "\nType your VoiceDesk command:\n> ";
+            << "\nType your VoiceAssistant command:\n> ";
 
         std::string typedCommand;
         std::getline(
@@ -179,14 +179,14 @@ int main()
         if (!voiceEngine.initialize())
         {
             std::cerr
-                << "VoiceDesk: "
+                << "VoiceAssistant: "
                 << "Voice subsystem initialization failed.\n";
 
             return 1;
         }
 
         std::cout
-            << "\nVoiceDesk: Voice subsystem ready.\n\n"
+            << "\nVoiceAssistant: Voice subsystem ready.\n\n"
             << "Speak your command now.\n";
 
         const std::string recognizedText =
@@ -195,7 +195,7 @@ int main()
         if (recognizedText.empty())
         {
             std::cerr
-                << "VoiceDesk: No speech recognized.\n";
+                << "VoiceAssistant: No speech recognized.\n";
 
             return 1;
         }
@@ -209,7 +209,7 @@ int main()
     }
 
     std::cout
-        << "VoiceDesk: Invalid input mode.\n";
+        << "VoiceAssistant: Invalid input mode.\n";
 
     return 1;
 }

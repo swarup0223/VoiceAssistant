@@ -1,4 +1,4 @@
-obj-m += voicedesk_driver.o
+obj-m += voiceassistant_driver.o
 
 KDIR ?= /lib/modules/$(shell uname -r)/build
 PWD := $(shell pwd)

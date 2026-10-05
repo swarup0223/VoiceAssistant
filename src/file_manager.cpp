@@ -44,7 +44,7 @@ bool FileManager::createFile(const std::string& filename) const
         return false;
     }
 
-    file << "Created by VoiceDesk\n";
+    file << "Created by VoiceAssistant\n";
 
     file.close();
 

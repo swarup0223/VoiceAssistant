@@ -1,8 +1,8 @@
-# VoiceDesk
+# VoiceAssistant
 
 ## Voice-Controlled Linux Desktop Assistant
 
-VoiceDesk is a **C++17 voice-controlled Linux desktop assistant** designed to demonstrate the integration of local speech recognition, natural-language command processing, command safety, Linux desktop automation, system monitoring, file management, process management, browser automation, and Linux kernel programming.
+VoiceAssistant is a **C++17 voice-controlled Linux desktop assistant** designed to demonstrate the integration of local speech recognition, natural-language command processing, command safety, Linux desktop automation, system monitoring, file management, process management, browser automation, and Linux kernel programming.
 
 The project provides a controlled interface for interacting with selected Linux desktop operations through **keyboard or voice input**.
 
@@ -33,7 +33,7 @@ The project provides a controlled interface for interacting with selected Linux 
 
 # 🏗️ System Architecture
 
-VoiceDesk follows a layered architecture separating voice recognition, safety validation, command interpretation, command execution, Linux operations, browser automation, and kernel communication.
+VoiceAssistant follows a layered architecture separating voice recognition, safety validation, command interpretation, command execution, Linux operations, browser automation, and kernel communication.
 
 ```text
                          ┌───────────────────────┐
@@ -74,7 +74,7 @@ VoiceDesk follows a layered architecture separating voice recognition, safety va
           └──────────────┘   └──────┬───────┘   └───────┬───────┘
                                     │                   │
                                     ▼                   ▼
-                             Firefox WebDriver       /dev/voicedesk
+                             Firefox WebDriver       /dev/voiceassistant
                                   BiDi                    │
                                                          ▼
                                                Linux Character Driver
@@ -124,7 +124,7 @@ User Input
         Linux Operations   Browser         Driver Client
                               │                │
                               ▼                ▼
-                       Firefox BiDi       /dev/voicedesk
+                       Firefox BiDi       /dev/voiceassistant
                                                │
                                                ▼
                                           Kernel Driver
@@ -141,7 +141,7 @@ This separation ensures:
 
 # 🎙️ Voice Recognition
 
-VoiceDesk uses **whisper.cpp** for local speech-to-text processing.
+VoiceAssistant uses **whisper.cpp** for local speech-to-text processing.
 
 ```text
 Microphone
@@ -179,7 +179,7 @@ third_party/whisper.cpp/models/ggml-small.en.bin
 
 # 🧠 Natural-Language Command Parsing
 
-VoiceDesk accepts different natural-language variations for supported intents.
+VoiceAssistant accepts different natural-language variations for supported intents.
 
 For example:
 
@@ -221,7 +221,7 @@ EXIT
 
 # 🛡️ Safety Engine
 
-VoiceDesk validates commands before they reach the execution layer.
+VoiceAssistant validates commands before they reach the execution layer.
 
 ```text
 Raw User Input
@@ -256,8 +256,8 @@ Example:
 User:
 rm -rf /
 
-VoiceDesk:
-VoiceDesk Safety Engine:
+VoiceAssistant:
+VoiceAssistant Safety Engine:
 This command has been blocked for security reasons.
 ```
 
@@ -269,7 +269,7 @@ The Linux character device driver provides user-space ↔ kernel-space communica
 
 # 🖥️ Application Management
 
-VoiceDesk uses controlled application matching instead of unrestricted arbitrary application execution.
+VoiceAssistant uses controlled application matching instead of unrestricted arbitrary application execution.
 
 Supported application examples include:
 
@@ -295,7 +295,7 @@ close firefox
 
 # 🌐 Web & Browser Commands
 
-VoiceDesk supports predefined web destinations:
+VoiceAssistant supports predefined web destinations:
 
 ```text
 open google
@@ -337,7 +337,7 @@ Normal visible browser opening continues to use the existing Linux desktop brows
 
 # 🦊 Firefox WebDriver BiDi
 
-VoiceDesk includes a dedicated Firefox WebDriver BiDi client.
+VoiceAssistant includes a dedicated Firefox WebDriver BiDi client.
 
 Source files:
 
@@ -374,7 +374,7 @@ firefox --headless --no-remote \
   --remote-allow-hosts localhost \
   --remote-allow-origins http://localhost:9222 \
   -remote-allow-system-access \
-  >/tmp/voicedesk-firefox.log 2>&1 &
+  >/tmp/voiceassistant-firefox.log 2>&1 &
 ```
 
 Verify the port:
@@ -386,7 +386,7 @@ ss -ltnp | grep ':9222'
 Check the log:
 
 ```bash
-cat /tmp/voicedesk-firefox.log
+cat /tmp/voiceassistant-firefox.log
 ```
 
 The implemented BiDi functionality has been tested with:
@@ -402,7 +402,7 @@ session.end
 Example architecture:
 
 ```text
-VoiceDesk
+VoiceAssistant
     │
     ▼
 Firefox BiDi Client
@@ -421,7 +421,7 @@ Web Page
 
 # 📂 File Management
 
-VoiceDesk supports controlled file operations.
+VoiceAssistant supports controlled file operations.
 
 ## List Files
 
@@ -446,7 +446,7 @@ Destructive file operations require confirmation.
 Example:
 
 ```text
-VoiceDesk Confirmation Required
+VoiceAssistant Confirmation Required
 ---------------------------------
 Action: Delete file
 
@@ -459,7 +459,7 @@ Are you sure? (y/n):
 
 # ⚙️ Process Management
 
-VoiceDesk can display running Linux processes.
+VoiceAssistant can display running Linux processes.
 
 ```text
 show processes
@@ -471,7 +471,7 @@ The ProcessManager provides the process-management functionality.
 
 # 📊 System Monitoring
 
-VoiceDesk provides Linux system information and monitoring.
+VoiceAssistant provides Linux system information and monitoring.
 
 ## System Information
 
@@ -530,18 +530,18 @@ show kernel information
 
 # 🔌 Linux Character Device Driver
 
-VoiceDesk includes a custom Linux character device driver.
+VoiceAssistant includes a custom Linux character device driver.
 
 Driver:
 
 ```text
-driver/voicedesk_driver.c
+driver/voiceassistant_driver.c
 ```
 
 Device:
 
 ```text
-/dev/voicedesk
+/dev/voiceassistant
 ```
 
 The driver demonstrates:
@@ -564,7 +564,7 @@ The driver demonstrates:
 
 # 🔄 User-Space ↔ Kernel-Space Communication
 
-VoiceDesk contains a dedicated driver client:
+VoiceAssistant contains a dedicated driver client:
 
 ```text
 include/device_driver_client.hpp
@@ -575,7 +575,7 @@ Communication path:
 
 ```text
 ┌───────────────────────────────┐
-│       VoiceDesk C++           │
+│       VoiceAssistant C++           │
 │          User Space           │
 └───────────────┬───────────────┘
                 │
@@ -585,7 +585,7 @@ Communication path:
                 │ close()
                 ▼
 ┌───────────────────────────────┐
-│        /dev/voicedesk         │
+│        /dev/voiceassistant         │
 └───────────────┬───────────────┘
                 │
                 ▼
@@ -598,7 +598,7 @@ Communication path:
 Conceptually:
 
 ```cpp
-DeviceDriverClient driver_("/dev/voicedesk");
+DeviceDriverClient driver_("/dev/voiceassistant");
 
 driver_.sendCommand("open firefox");
 ```
@@ -666,7 +666,7 @@ Provides Linux system information and monitoring.
 Provides the user-space interface to:
 
 ```text
-/dev/voicedesk
+/dev/voiceassistant
 ```
 
 ## Linux Character Driver
@@ -678,7 +678,7 @@ Provides the kernel-space communication endpoint.
 # 📁 Project Structure
 
 ```text
-VoiceDesk/
+VoiceAssistant/
 │
 ├── Makefile
 ├── README.md
@@ -693,7 +693,7 @@ VoiceDesk/
 ├── driver/
 │   ├── Makefile
 │   ├── README.md
-│   └── voicedesk_driver.c
+│   └── voiceassistant_driver.c
 │
 ├── include/
 │   ├── application_manager.hpp
@@ -751,7 +751,7 @@ VoiceDesk/
 
 # 📋 Requirements
 
-VoiceDesk requires a Linux environment with:
+VoiceAssistant requires a Linux environment with:
 
 - GCC / G++
 - GNU Make
@@ -780,8 +780,8 @@ make --version
 ## 1. Clone the Repository
 
 ```bash
-git clone https://github.com/SRIYA-BOSE/VoiceDesk.git
-cd VoiceDesk
+git clone https://github.com/SRIYA-BOSE/VoiceAssistant.git
+cd VoiceAssistant
 ```
 
 Initialize the whisper.cpp submodule:
@@ -832,7 +832,7 @@ The model is intentionally excluded from Git because of its size.
 
 ---
 
-# 4. Build VoiceDesk
+# 4. Build VoiceAssistant
 
 From the project root:
 
@@ -843,7 +843,7 @@ make
 The executable will be generated at:
 
 ```text
-build/voicedesk
+build/voiceassistant
 ```
 
 For a clean rebuild:
@@ -866,7 +866,7 @@ make
 The resulting module is:
 
 ```text
-voicedesk_driver.ko
+voiceassistant_driver.ko
 ```
 
 Return to the project root:
@@ -880,25 +880,25 @@ cd ..
 ## 2. Load the Driver
 
 ```bash
-sudo insmod driver/voicedesk_driver.ko
+sudo insmod driver/voiceassistant_driver.ko
 ```
 
 Verify:
 
 ```bash
-lsmod | grep voicedesk
+lsmod | grep voiceassistant
 ```
 
 Check the device:
 
 ```bash
-ls -l /dev/voicedesk
+ls -l /dev/voiceassistant
 ```
 
 Check kernel messages:
 
 ```bash
-dmesg | grep voicedesk
+dmesg | grep voiceassistant
 ```
 
 ## 3. Device Permissions
@@ -906,7 +906,7 @@ dmesg | grep voicedesk
 A udev rule can be configured as:
 
 ```text
-KERNEL=="voicedesk", MODE="0660", GROUP="users"
+KERNEL=="voiceassistant", MODE="0660", GROUP="users"
 ```
 
 Reload the rules:
@@ -919,7 +919,7 @@ sudo udevadm trigger
 Verify:
 
 ```bash
-ls -l /dev/voicedesk
+ls -l /dev/voiceassistant
 ```
 
 ---
@@ -934,7 +934,7 @@ firefox --headless --no-remote \
   --remote-allow-hosts localhost \
   --remote-allow-origins http://localhost:9222 \
   -remote-allow-system-access \
-  >/tmp/voicedesk-firefox.log 2>&1 &
+  >/tmp/voiceassistant-firefox.log 2>&1 &
 ```
 
 Verify:
@@ -946,7 +946,7 @@ ss -ltnp | grep ':9222'
 Check the Firefox log:
 
 ```bash
-cat /tmp/voicedesk-firefox.log
+cat /tmp/voiceassistant-firefox.log
 ```
 
 The BiDi endpoint should be available through:
@@ -957,15 +957,15 @@ ws://127.0.0.1:9222
 
 ---
 
-# ▶️ Running VoiceDesk
+# ▶️ Running VoiceAssistant
 
 Start the application:
 
 ```bash
-./build/voicedesk
+./build/voiceassistant
 ```
 
-VoiceDesk presents two input modes:
+VoiceAssistant presents two input modes:
 
 ```text
 Select command input mode:
@@ -1006,7 +1006,7 @@ show processes
 Start:
 
 ```bash
-./build/voicedesk
+./build/voiceassistant
 ```
 
 Select:
@@ -1015,7 +1015,7 @@ Select:
 2
 ```
 
-VoiceDesk initializes whisper.cpp and waits for speech.
+VoiceAssistant initializes whisper.cpp and waits for speech.
 
 Example:
 
@@ -1160,7 +1160,7 @@ rm -rf /
 Expected:
 
 ```text
-VoiceDesk Safety Engine:
+VoiceAssistant Safety Engine:
 This command has been blocked for security reasons.
 ```
 
@@ -1181,31 +1181,31 @@ BLOCK
 Check whether the module is loaded:
 
 ```bash
-lsmod | grep voicedesk
+lsmod | grep voiceassistant
 ```
 
 Check the device:
 
 ```bash
-ls -l /dev/voicedesk
+ls -l /dev/voiceassistant
 ```
 
 Check kernel messages:
 
 ```bash
-dmesg | grep voicedesk
+dmesg | grep voiceassistant
 ```
 
 Typical driver messages may include:
 
 ```text
-voicedesk: driver loaded
-voicedesk: device opened
-voicedesk: received command: open firefox
-voicedesk: device closed
+voiceassistant: driver loaded
+voiceassistant: device opened
+voiceassistant: received command: open firefox
+voiceassistant: device closed
 ```
 
-These messages demonstrate communication between the VoiceDesk application and the Linux character driver.
+These messages demonstrate communication between the VoiceAssistant application and the Linux character driver.
 
 ---
 
@@ -1216,13 +1216,13 @@ A complete demonstration can follow this sequence.
 ## Step 1 — Verify the Driver
 
 ```bash
-lsmod | grep voicedesk
+lsmod | grep voiceassistant
 ```
 
 ## Step 2 — Verify the Device
 
 ```bash
-ls -l /dev/voicedesk
+ls -l /dev/voiceassistant
 ```
 
 ## Step 3 — Start Firefox BiDi
@@ -1233,7 +1233,7 @@ firefox --headless --no-remote \
   --remote-allow-hosts localhost \
   --remote-allow-origins http://localhost:9222 \
   -remote-allow-system-access \
-  >/tmp/voicedesk-firefox.log 2>&1 &
+  >/tmp/voiceassistant-firefox.log 2>&1 &
 ```
 
 Verify:
@@ -1242,10 +1242,10 @@ Verify:
 ss -ltnp | grep ':9222'
 ```
 
-## Step 4 — Start VoiceDesk
+## Step 4 — Start VoiceAssistant
 
 ```bash
-./build/voicedesk
+./build/voiceassistant
 ```
 
 ## Step 5 — Execute an Application Command
@@ -1360,7 +1360,7 @@ The Linux character driver handles:
 
 # 🏛️ Software Architecture Concepts
 
-VoiceDesk demonstrates:
+VoiceAssistant demonstrates:
 
 ### Modular Architecture
 
@@ -1438,10 +1438,10 @@ release
 
 A Linux character device provides a standard file-like interface between user-space applications and kernel-space drivers.
 
-VoiceDesk uses:
+VoiceAssistant uses:
 
 ```text
-/dev/voicedesk
+/dev/voiceassistant
 ```
 
 The C++ application communicates with the driver through standard Linux operations:
@@ -1459,7 +1459,7 @@ This creates a clear user-space ↔ kernel-space boundary suitable for demonstra
 
 # 🔐 Public Repository Security
 
-VoiceDesk is intended to remain publicly accessible.
+VoiceAssistant is intended to remain publicly accessible.
 
 **Never commit sensitive information**, including:
 
@@ -1536,7 +1536,7 @@ Potential future improvements include:
 
 # 📊 Project Status
 
-VoiceDesk currently provides:
+VoiceAssistant currently provides:
 
 - ✅ C++17 Linux desktop assistant
 - ✅ Local speech recognition
@@ -1561,7 +1561,7 @@ VoiceDesk currently provides:
 - ✅ Load average
 - ✅ Kernel information
 - ✅ Custom Linux character device driver
-- ✅ `/dev/voicedesk` device interface
+- ✅ `/dev/voiceassistant` device interface
 - ✅ User-space ↔ kernel-space communication
 - ✅ Kernel synchronization using mutex
 - ✅ Modular C++ architecture
@@ -1592,15 +1592,15 @@ driver/
 
 GitHub:
 
-https://github.com/SRIYA-BOSE/VoiceDesk
+https://github.com/SRIYA-BOSE/VoiceAssistant
 
 ---
 
 # 👨‍💻 Project Summary
 
-## VoiceDesk — Voice-Controlled Linux Desktop Assistant
+## VoiceAssistant — Voice-Controlled Linux Desktop Assistant
 
-VoiceDesk demonstrates the integration of:
+VoiceAssistant demonstrates the integration of:
 
 ```text
 C++17
@@ -1631,7 +1631,7 @@ The project demonstrates how a modern voice interface can be combined with:
 - Defensive command execution
 - Linux kernel programming
 
-VoiceDesk is designed as an academic, systems-programming, and demonstration project showing the interaction between a modern C++ application and Linux operating-system facilities.
+VoiceAssistant is designed as an academic, systems-programming, and demonstration project showing the interaction between a modern C++ application and Linux operating-system facilities.
 
 ---
 

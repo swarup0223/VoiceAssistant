@@ -182,9 +182,9 @@ ParsedCommand CommandParser::parse(
 
     const std::vector<std::string> prefixes =
     {
-        "hello voice desk ",
-        "hi voice desk ",
-        "hey voice desk ",
+        "hello voice assistant ",
+        "hi voice assistant ",
+        "hey voice assistant ",
         "would you please ",
         "can you please ",
         "could you please ",

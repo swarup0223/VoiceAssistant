@@ -53,7 +53,7 @@ bool VoiceEngine::recordAudio(
 {
     std::cout
         << "\nListening for 5 seconds...\n"
-        << "Speak a VoiceDesk command now.\n";
+        << "Speak a VoiceAssistant command now.\n";
 
     std::remove(filename.c_str());
 
@@ -451,7 +451,7 @@ std::string VoiceEngine::transcribe(
 std::string VoiceEngine::listen()
 {
     const std::string filename =
-        "/tmp/voicedesk_command.wav";
+        "/tmp/voiceassistant_command.wav";
 
     if (!recordAudio(filename))
     {

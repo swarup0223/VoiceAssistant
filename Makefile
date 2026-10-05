@@ -19,7 +19,7 @@ LDLIBS = \
 	-lggml-base \
 	-lggml-cpu
 
-TARGET = build/voicedesk
+TARGET = build/voiceassistant
 
 SOURCES = \
 	src/main.cpp \
@@ -63,7 +63,7 @@ run: $(TARGET)
 QT_CXXFLAGS = $(shell pkg-config --cflags Qt6Widgets)
 QT_LDFLAGS = $(shell pkg-config --libs Qt6Widgets)
 
-GUI_TARGET = build/voicedesk-gui
+GUI_TARGET = build/voiceassistant-gui
 
 GUI_SOURCES = \
 	src/gui_main.cpp \
